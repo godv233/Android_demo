@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#eeeeee"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_marginTop="40sp"
         android:text="登录页面"
         android:textColor="#000000"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
     <!-- 用户名   -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,43 +35,44 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="4"
-            android:selectAllOnFocus="true"
-            android:hint="请输入用户名" />
+            android:hint="请输入用户名"
+            android:selectAllOnFocus="true" />
     </LinearLayout>
 
-        <!-- 密码   -->
-        <LinearLayout
-            android:layout_width="match_parent"
+    <!-- 密码   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="密   码："
+            android:textColor="#000000"
+            android:textSize="19sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="密   码："
-                android:textColor="#000000"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/edPas"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="4"
-                android:selectAllOnFocus="true"
-                android:inputType="textPassword"
-                android:hint="请输入密码" />
+        <EditText
+            android:id="@+id/edPas"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="4"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true" />
 
 
     </LinearLayout>
+
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@drawable/btn"
         android:text="按钮"
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 
 </LinearLayout>
