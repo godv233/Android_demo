@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class News {
-    private String title;
-    private String content;
-    private int icon;
+public class Icon {
+    private int iconId;
+    private String name;
 }

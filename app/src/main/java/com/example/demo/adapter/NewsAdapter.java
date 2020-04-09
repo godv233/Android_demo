@@ -48,4 +48,27 @@ public class NewsAdapter extends BaseAdapter {
         content.setText(data.get(position).getContent());
         return convertView;
     }
+    //优化BaseAdapter
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//            ViewHolder holder=null;
+//            if (convertView==null){
+//                holder=new ViewHolder();
+//                convertView=LayoutInflater.from(context).inflate(R.layout.listview_item,parent,false);
+//                holder.imgIcon=convertView.findViewById(R.id.img_icon);
+//                holder.title=convertView.findViewById(R.id.tv_title);
+//                holder.content=convertView.findViewById(R.id.tv_content);
+//            }else{
+//                holder= (ViewHolder) convertView.getTag();
+//            }
+//            holder.imgIcon.setBackgroundResource(data.get(position).getIcon());
+//            holder.title.setText(data.get(position).getTitle());
+//            holder.content.setText(data.get(position).getContent());
+//            return convertView;
+//    }
+//    static class ViewHolder{
+//        ImageView imgIcon;
+//        TextView title;
+//        TextView content;
+//    }
 }
