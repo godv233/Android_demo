@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--静态加载-->
+    <fragment
+        android:id="@+id/myFragment"
+        android:name="com.example.demo.fragment.MyFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="godv"
+        android:textSize="20sp" />
+    <!--动态加载的样式-->
+    <RelativeLayout
+        android:id="@+id/rl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp" />
+
+</LinearLayout>
