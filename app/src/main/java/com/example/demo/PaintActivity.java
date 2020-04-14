@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.demo.view.DemoView;
 import com.example.demo.view.PaintView;
 
 /**
@@ -19,6 +20,6 @@ public class PaintActivity extends AppCompatActivity {
         setContentView(R.layout.paintview);
         //布局管理器
         LinearLayout manager=findViewById(R.id.linearLayout);
-        manager.addView(new PaintView(this));
+        manager.addView(new DemoView(this));
     }
 }
