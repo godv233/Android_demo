@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.demo.adapter.GridViewAdapter;
 import com.example.demo.entity.Icon;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,14 @@ public class GridViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(mContext, "你点击了~" + position + "~项", Toast.LENGTH_SHORT).show();
+                //使用Snackbar
+                Snackbar.make(view, "你点击了" + position, Snackbar.LENGTH_SHORT).setAction("撤销", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(mContext, "撤销了删除", Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
+
             }
         });
 
