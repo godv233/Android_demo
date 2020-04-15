@@ -13,14 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
 /**
  * @Author godv
- * Date on 2020/4/14  22:02
+ * Date on 2020/4/15  11:35
  */
-public class FileActivity extends AppCompatActivity {
+public class SDActivity extends AppCompatActivity {
     private EditText editname;
     private EditText editdetail;
     private Button btnsave;
@@ -28,13 +29,33 @@ public class FileActivity extends AppCompatActivity {
     private Button btnread;
     private Context mContext;
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            "android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.WRITE_EXTERNAL_STORAGE"};
+
+
+    public static void verifyStoragePermissions(Activity activity) {
+
+        try {
+            //检测是否有写的权限
+            int permission = ActivityCompat.checkSelfPermission(activity,
+                    "android.permission.WRITE_EXTERNAL_STORAGE");
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // 没有写的权限，去申请写的权限，会弹出对话框
+                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_layout);
-        if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }
+        //申请权限
+        verifyStoragePermissions(this);
         mContext = getApplication();
         editdetail = (EditText) findViewById(R.id.editdetail);
         editname = (EditText) findViewById(R.id.editname);
@@ -53,11 +74,11 @@ public class FileActivity extends AppCompatActivity {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FileHelper fHelper = new FileHelper(mContext);
                 String filename = editname.getText().toString();
                 String filedetail = editdetail.getText().toString();
+                SDFileHelper sdHelper = new SDFileHelper(mContext);
                 try {
-                    fHelper.save(filename, filedetail);
+                    sdHelper.savaFileToSD(filename, filedetail);
                     Toast.makeText(getApplicationContext(), "数据写入成功", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -69,15 +90,16 @@ public class FileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String detail = "";
-                FileHelper fHelper2 = new FileHelper(getApplicationContext());
+                SDFileHelper sdHelper2 = new SDFileHelper(mContext);
                 try {
-                    String fname = editname.getText().toString();
-                    detail = fHelper2.read(fname);
+                    String filename2 = editname.getText().toString();
+                    detail = sdHelper2.readFromSD(filename2);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 Toast.makeText(getApplicationContext(), detail, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }
