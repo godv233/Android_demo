@@ -32,9 +32,7 @@ public class FileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_layout);
-        if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }
+
         mContext = getApplication();
         editdetail = (EditText) findViewById(R.id.editdetail);
         editname = (EditText) findViewById(R.id.editname);
