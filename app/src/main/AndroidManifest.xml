@@ -8,9 +8,14 @@
     <!--    sd创建和删除文件权限-->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!--    sd读写权限-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--    网络权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +24,7 @@
         android:theme="@style/AppTheme">
         <service android:name=".service.MyService" />
 
-        <activity android:name=".DBActivity">
+        <activity android:name=".HttpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
