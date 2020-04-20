@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
         <service android:name=".service.MyService" />
 
-        <activity android:name=".FileActivity">
+        <activity android:name=".DBActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
