@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 
@@ -55,7 +54,7 @@ public class FileActivity extends AppCompatActivity {
                 String filename = editname.getText().toString();
                 String filedetail = editdetail.getText().toString();
                 try {
-                    fHelper.save(filename, filedetail);
+                    fHelper.saveSharedPreferences(filename, filedetail);
                     Toast.makeText(getApplicationContext(), "数据写入成功", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,12 +67,8 @@ public class FileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String detail = "";
                 FileHelper fHelper2 = new FileHelper(getApplicationContext());
-                try {
-                    String fname = editname.getText().toString();
-                    detail = fHelper2.read(fname);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                String fname = editname.getText().toString();
+                detail = fHelper2.readSharedPreferences(fname);
                 Toast.makeText(getApplicationContext(), detail, Toast.LENGTH_SHORT).show();
             }
         });
