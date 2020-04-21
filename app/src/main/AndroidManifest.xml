@@ -24,6 +24,7 @@
         android:theme="@style/AppTheme">
         <service android:name=".service.MyService" />
         <activity android:name=".HandlerTestActivity"/>
+        <activity android:name=".AsyncTaskTestActivity"/>
         <activity android:name=".HandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

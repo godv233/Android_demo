@@ -25,7 +25,7 @@ public class HandlerActivity extends Activity {
 //        startActivity(new Intent(this, HandlerDemoActivity.class));
 //    }
 //
-//    public void testAsyncTask(View v) {
-//        startActivity(new Intent(this, AsyncTaskTestActivity.class));
-//    }
+    public void testAsyncTask(View v) {
+        startActivity(new Intent(this, AsyncTaskTestActivity.class));
+    }
 }

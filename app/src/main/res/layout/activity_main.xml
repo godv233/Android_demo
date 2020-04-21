@@ -17,11 +17,11 @@
     <!--        android:text="Handler Demo"-->
     <!--        android:textSize="20dp" />-->
 
-    <!--    <Button-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:onClick="testAsyncTask"-->
-    <!--        android:text="Test AsyncTask"-->
-    <!--        android:textSize="20dp" />-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testAsyncTask"
+            android:text="Test AsyncTask"
+            android:textSize="20dp" />
 
 </LinearLayout>
