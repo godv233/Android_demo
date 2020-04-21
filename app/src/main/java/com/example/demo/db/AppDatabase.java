@@ -9,8 +9,8 @@ import com.example.demo.entity.Anime;
  * @Author godv
  * Date on 2020/4/21  10:31
  */
-@Database(entities = {Anime.class},version = 1)
-public abstract class AppDatabase extends RoomDatabase {
+@Database(entities = {Anime.class},version = 1,exportSchema = false)
+ public abstract class AppDatabase extends RoomDatabase {
     public abstract AnimeDao animeDao();
 }
 
