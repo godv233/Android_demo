@@ -24,7 +24,7 @@
         android:theme="@style/AppTheme">
         <service android:name=".service.MyService" />
 
-        <activity android:name=".HttpActivity">
+        <activity android:name=".RoomDBActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
