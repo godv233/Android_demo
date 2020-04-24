@@ -28,12 +28,35 @@ public class FileActivity extends AppCompatActivity {
     private Button btnread;
     private Context mContext;
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            "android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.WRITE_EXTERNAL_STORAGE" };
+    /*
+     * android 动态权限申请
+     * */
+    public static void verifyStoragePermissions(Activity activity) {
+        try {
+            //检测是否有写的权限
+            int permission = ActivityCompat.checkSelfPermission(activity,
+                    "android.permission.WRITE_EXTERNAL_STORAGE");
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // 没有写的权限，去申请写的权限，会弹出对话框
+                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_layout);
+        verifyStoragePermissions(this);
 
         mContext = getApplication();
         editdetail = (EditText) findViewById(R.id.editdetail);
@@ -57,7 +80,7 @@ public class FileActivity extends AppCompatActivity {
                 String filename = editname.getText().toString();
                 String filedetail = editdetail.getText().toString();
                 try {
-                    fHelper.save(filename, filedetail);
+                    fHelper.savFileToSD(filename, filedetail);
                     Toast.makeText(getApplicationContext(), "数据写入成功", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -72,7 +95,7 @@ public class FileActivity extends AppCompatActivity {
                 FileHelper fHelper2 = new FileHelper(getApplicationContext());
                 String fname = editname.getText().toString();
                 try {
-                    detail = fHelper2.read(fname);
+                    detail = fHelper2.readFromSD(fname);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
