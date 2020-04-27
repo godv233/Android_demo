@@ -62,7 +62,7 @@ public class NetActivity extends Activity {
         mResultAdapter.setData(result);
     }
 
-
+    //点击事件
     public void startRequest(View view) {
         new Thread(new Runnable() {
             @Override

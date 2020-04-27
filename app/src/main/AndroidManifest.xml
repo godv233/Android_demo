@@ -25,7 +25,7 @@
         <service android:name=".service.MyService" />
         <activity android:name=".HandlerTestActivity"/>
         <activity android:name=".AsyncTaskTestActivity"/>
-        <activity android:name=".net.NetActivity">
+        <activity android:name=".BitMapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
