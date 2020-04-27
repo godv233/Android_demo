@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.demo.entity.Anime;
+
 import java.io.IOException;
 
 /**
@@ -48,8 +50,6 @@ public class FileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
 
 
     @Override

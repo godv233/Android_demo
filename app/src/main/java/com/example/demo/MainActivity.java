@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //异常发生
-                int a=2/0;
+//                int a=2/0;
                 if (btn.getText().toString().equals("按钮")){
                     btn.setEnabled(false);
                     btn.setText("按钮不可用");
