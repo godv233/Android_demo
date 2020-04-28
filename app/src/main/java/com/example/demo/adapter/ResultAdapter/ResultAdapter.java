@@ -1,6 +1,7 @@
 package com.example.demo.adapter.ResultAdapter;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class ResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         myHolder.user_name.setText(contentBean.getUserName());
         myHolder.user_info.setText(contentBean.getPosition() + "@" + contentBean.getCompany());
+        Log.e("ResultAdapter",contentBean.getUserAvatar());
         //图片我们先借助于Glide库
         Glide.with(holder.itemView.getContext()).load(contentBean.getUserAvatar()).into(((MyHolder) holder).user_avatar);
 

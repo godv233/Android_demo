@@ -1,17 +1,17 @@
 package com.example.demo;
 
-import android.app.Activity;
+
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.demo.adapter.ResultReAdapter;
+import com.example.demo.entity.JsonResult;
+import com.google.gson.Gson;
 import java.io.IOException;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,11 +24,21 @@ import retrofit2.Retrofit;
  */
 public class RetrofitActivity extends AppCompatActivity {
     private static final String TAG = "RetrofitActivity";
+    private ResultReAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.retrofit_layout);
+        initView();
+    }
+
+    private void initView() {
+        RecyclerView recyclerView = findViewById(R.id.result_re_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ResultReAdapter();
+        recyclerView.setAdapter(adapter);
+
     }
 
     //get请求
@@ -44,11 +54,15 @@ public class RetrofitActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.e(TAG,"code--->"+response.code());
-                    Log.e(TAG, response.body().string());
+                    String resultString = response.body().string();
+                    Gson gson = new Gson();
+                    JsonResult resultObj = gson.fromJson(resultString, JsonResult.class);
+                    updateList(resultObj);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
 
             @Override
@@ -57,5 +71,10 @@ public class RetrofitActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //更新UI
+    private void updateList(JsonResult resultObj) {
+        adapter.setData(resultObj);
     }
 }

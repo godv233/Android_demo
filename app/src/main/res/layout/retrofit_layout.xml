@@ -5,8 +5,13 @@
     android:orientation="vertical">
 
     <Button
-        android:onClick="retrofitGet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="retrofitGet"
         android:text="get" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/result_re_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
