@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.androidnetworking.gsonparserfactory.GsonParserFactory;
 import com.example.demo.adapter.ResultReAdapter;
 import com.example.demo.entity.JsonResult;
 import com.google.gson.Gson;
@@ -17,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @Author godv
@@ -44,29 +47,22 @@ public class RetrofitActivity extends AppCompatActivity {
     //get请求
     public void retrofitGet(View view) {
         Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("http://10.0.2.2:9102")
                 .build();
         RetrofitHelper api = retrofit.create(RetrofitHelper.class);
-        Call<ResponseBody> task = api.getJson();
+        Call<JsonResult> task = api.getJson();
 
         //异步请求
-        task.enqueue(new Callback<ResponseBody>() {
+        task.enqueue(new Callback<JsonResult>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    String resultString = response.body().string();
-                    Gson gson = new Gson();
-                    JsonResult resultObj = gson.fromJson(resultString, JsonResult.class);
-                    updateList(resultObj);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+            public void onResponse(Call<JsonResult> call, Response<JsonResult> response) {
+                JsonResult jsonResult = response.body();
+                updateList(jsonResult);
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<JsonResult> call, Throwable t) {
                 Log.e(TAG, t.toString());
             }
         });
