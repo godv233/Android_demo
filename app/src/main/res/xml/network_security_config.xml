@@ -5,4 +5,5 @@
         <domain includeSubdomains="true">10.0.2.2</domain><!--just permitted 127.0.0.1-->
         <domain includeSubdomains="true">localhost</domain>
     </domain-config>
+    <base-config cleartextTrafficPermitted="true" />
 </network-security-config>
