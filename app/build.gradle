@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
 
     implementation 'io.reactivex:rxjava:1.0.14'
-    implementation 'io.reactivex:rxandroid:1.0.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
 
     implementation 'me.tatarka:gradle-retrolambda:3.7.0'
 }
