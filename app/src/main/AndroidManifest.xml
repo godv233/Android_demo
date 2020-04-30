@@ -25,7 +25,7 @@
         <service android:name=".service.MyService" />
         <activity android:name=".HandlerTestActivity"/>
         <activity android:name=".AsyncTaskTestActivity"/>
-        <activity android:name=".RxJava.RxBindingActivity">
+        <activity android:name=".glide.GlideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
